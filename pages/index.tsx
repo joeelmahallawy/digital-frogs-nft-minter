@@ -141,7 +141,7 @@ const IndexPage = () => {
               <Text fontWeight="bold" fontSize="xl">
                 Public price:
                 <br />
-                <span style={{ fontWeight: "500" }}>0 AVAX</span>
+                <span style={{ fontWeight: "500" }}>0 MATIC</span>
               </Text>
               {/* <Tooltip label="You are whitelisted" fontSize="md">
                 <IoMdListBox />
