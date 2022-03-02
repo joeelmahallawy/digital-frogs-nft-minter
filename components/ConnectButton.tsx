@@ -4,8 +4,10 @@ import { Address } from "@web3-ui/components";
 
 const ConnectButton = ({ state }) => {
   return state.value?.wallet ? (
-    <Flex ml="auto" mt="5%" mr="5%">
+    <Flex ml="auto" mt="2.5%" mr="2.5%">
       <Button
+        // p="0.75rem"
+        // fontSize="0.75rem"
         variant="outline"
         borderTopLeftRadius={5}
         borderBottomLeftRadius={5}
@@ -18,6 +20,8 @@ const ConnectButton = ({ state }) => {
         <Address value={state.value?.wallet} shortened copiable />
       </Button>
       <Button
+        // p="0.75rem"
+        // fontSize="0.75rem"
         borderRadius={0}
         borderTopEndRadius={5}
         borderBottomEndRadius={5}

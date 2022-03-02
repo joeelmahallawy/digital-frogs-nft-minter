@@ -9,6 +9,7 @@ import {
   useToast,
   useDisclosure,
   Link,
+  Tooltip,
 } from "@chakra-ui/react";
 import { Address } from "@web3-ui/components";
 import React, { useEffect, useState } from "react";
@@ -20,7 +21,7 @@ import NftModal from "../components/showNFT";
 import mintNFT from "../web3/contractMethods/mint";
 import Countdown from "react-countdown";
 import { useWallet } from "@web3-ui/hooks";
-import switchNetworkMumbai from "../helpers/switchChain";
+import switchNetworkPolygon from "../helpers/switchChain";
 import init from "../helpers/init";
 import ConnectButton from "../components/ConnectButton";
 import { useRouter } from "next/router";
@@ -28,19 +29,20 @@ import { useRouter } from "next/router";
 const Completionist = () => <span>Minting opened!</span>;
 
 const IndexPage = () => {
+  const [imageURL, setimageURL] = useState();
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [tokenid, setTokenid] = useState();
   const [showModal, setshowModal] = useState(false);
   const router = useRouter();
-  // const [userMinted, SetuserMinted] = useState(false)
+
   const [state, doFetch] = useAsyncFn(async () => {
     if ((await web3.eth.getChainId()) != POLYGON_MUMBAI_CHAIN_ID) {
       // check if we're not on the right chain
-      switchNetworkMumbai()
+      switchNetworkPolygon()
         .then(async () => {
           // return await init();
-          //if successfully switched, reload and reinitialize
+          //if successfully switched, reload and reinitialize variables
           router.reload();
         })
         .catch(() => {
@@ -62,6 +64,12 @@ const IndexPage = () => {
     doFetch();
   }, []);
 
+  // (async () => {
+  //   console.log(
+
+  //   );
+  // })();
+
   return (
     <Center h="100vh">
       <Box h="100%" w={["45%", "45%", "50%", "50%", "55%", "60%"]}>
@@ -78,28 +86,27 @@ const IndexPage = () => {
         w={["55%", "55%", "50%", "50%", "45%", "40%"]}
       >
         <Center>
-          <Link isExternal href="http://anuradao.finance">
-            <Center
-              color="white"
-              border="1px solid gray"
-              bg="gray.800"
-              borderRadius="50%"
-              p={3}
-              mt={5}
-              ml={10}
-              w="110px"
-              h="90px"
-            >
+          <Center
+            color="white"
+            border="1px solid gray"
+            bg="gray.800"
+            borderRadius="50%"
+            p={3}
+            mt={5}
+            ml={5}
+            w={["110px", "110px", "60px", "80px", "80px", "110px"]}
+          >
+            <Link isExternal href="http://anuradao.finance">
               <Image
                 w="100%"
                 h="100%"
                 src="https://hhuzrwzphweoxbywzhhv.supabase.in/storage/v1/object/public/dao-images/daos/646417780576616458.png"
               />
-            </Center>
-          </Link>
+            </Link>
+          </Center>
           <Heading
             ml={3}
-            fontSize="5xl"
+            fontSize={["xl", "xl", "xl", "2xl", "2xl", "5xl"]}
             bgGradient="linear(to-r, orange.300,red.500, green.700)"
             bgClip="text"
             mt={5}
@@ -110,7 +117,7 @@ const IndexPage = () => {
           <ConnectButton state={state} />
         </Center>
         <Center flexDir="column" gap={5} h="100%">
-          <Heading color="white">
+          <Heading color="white" fontSize="1.75rem">
             Countdown clock:{" "}
             <span style={{ fontWeight: "500", color: "lightgreen" }}>
               <Countdown date={new Date("3/1/22")}>
@@ -128,21 +135,29 @@ const IndexPage = () => {
             flexDir="column"
           >
             <Center w="100%" gap={5} justifyContent="space-between">
-              <Text fontWeight="bold" fontSize="2xl">
+              <Text fontWeight="bold" fontSize="xl">
                 Remaining:
                 <br />
                 <span style={{ fontWeight: "500" }}>
                   {TOTAL_NUMBER_OF_NFTS - Number(state.value?.totalNFTsMinted)}
                 </span>
               </Text>
-              <Text fontWeight="bold" fontSize="2xl">
+              <Text fontWeight="bold" fontSize="xl">
                 Public price:
                 <br />
                 <span style={{ fontWeight: "500" }}>0 AVAX</span>
               </Text>
-              <Button _hover={{ cursor: "default" }} _focus={{}} _active={{}}>
-                Live
-              </Button>
+              {/* <Tooltip label="You are whitelisted" fontSize="md">
+                <IoMdListBox />
+              </Tooltip> */}
+              <Center flexDir="column">
+                <Button _hover={{ cursor: "default" }} _focus={{}} _active={{}}>
+                  Live
+                </Button>
+                <Text fontWeight="500">
+                  You are {state.value?.isWhiteListed ? null : "not"} an OG
+                </Text>
+              </Center>
             </Center>
             <Button
               onClick={async () => {
@@ -170,6 +185,20 @@ const IndexPage = () => {
             >
               Mint
             </Button>
+            {/* <Button
+              onClick={async () => {
+                const res = await fetch(
+                  "https://bafybeihpckxtorjodh3ewvvjonz3aqzorynq3ghczn3gcr4x3qadl4gafa.ipfs.dweb.link/1.json"
+                );
+                const data = await res.json();
+                setimageURL(data.image);
+                // console.log(data.image);
+              }}
+            >
+              Get JSON data
+            </Button> */}
+
+            {/* <Image src={imageURL} /> */}
             <NftModal
               isOpen={isOpen}
               onClose={onClose}
@@ -187,5 +216,4 @@ const IndexPage = () => {
     </Center>
   );
 };
-
 export default IndexPage;

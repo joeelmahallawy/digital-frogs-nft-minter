@@ -1,11 +1,8 @@
-import { web3 } from "../utils";
-
-const switchNetworkMumbai = async () => {
+const switchNetworkPolygon = async () => {
   await window.ethereum.request({
     method: "wallet_switchEthereumChain",
-    params: [{ chainId: "0x13881" }],
+    params: [{ chainId: "0x89" }],
   });
-
   //   if (error.code === 4902) {
   //     try {
   //       await window.ethereum.request({
@@ -30,4 +27,4 @@ const switchNetworkMumbai = async () => {
   //   }
 };
 
-export default switchNetworkMumbai;
+export default switchNetworkPolygon;

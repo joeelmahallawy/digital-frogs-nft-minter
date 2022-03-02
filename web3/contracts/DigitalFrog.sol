@@ -63,7 +63,6 @@ contract MyToken is ERC721, ERC721URIStorage, Ownable {
         tokenURIsMap[tokenID]=string(abi.encodePacked(baseURI, '/', Strings.toString(tokenID),'.png'));
     }
 
-//     0x680546235ecE9af141F0bd02097CB10b12fa96B8
 //    ipfs://QmZNkcKGLUxnqBidDMP2KwuQyUXETpa9feFvDuvufTwXKH
 // ["0x680546235ecE9af141F0bd02097CB10b12fa96B8", "0xF60A331D22F382b9d4Defd1472Faf1918668629e"]
 
@@ -76,7 +75,7 @@ contract MyToken is ERC721, ERC721URIStorage, Ownable {
         _safeMint(to, tokenId);
         setTokenURI(tokenId);
         }
-        else{
+        else {
         uint256 tokenId = _tokenIdCounterNormal.current();
         _tokenIdCounterNormal.increment();
         _safeMint(to, tokenId);
