@@ -11,6 +11,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { IPFS_BASE_URI } from "../utils";
 
 const NftModal = ({ tokenID, isOpen, onClose }) => {
   return (
@@ -21,7 +22,7 @@ const NftModal = ({ tokenID, isOpen, onClose }) => {
           <ModalHeader>Digital Frog #{tokenID}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Image src={`${process.env.NEXT_PUBLIC_BASE_URI}/${tokenID}.png`} />
+            <Image src={`${IPFS_BASE_URI}/${tokenID}.png`} />
           </ModalBody>
 
           <ModalFooter>
