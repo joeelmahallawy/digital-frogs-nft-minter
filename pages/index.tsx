@@ -193,7 +193,6 @@ const IndexPage = () => {
             >
               Get JSON data
             </Button> */}
-
             {/* <Image src={imageURL} /> */}
             <NftModal
               isOpen={isOpen}

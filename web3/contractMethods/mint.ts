@@ -1,7 +1,7 @@
 const mintNFT = async (setTokenid, state, toast, onOpen, setshowModal) => {
   return state.value?.contract.methods
     .safeMint(state.value?.wallet)
-    .send({ from: state.value?.wallet })
+    .send({ from: state.value?.wallet, value: 500000 })
     .then((val) => {
       const tokenID = val.events.Transfer.returnValues.tokenId;
       setTokenid(tokenID);
