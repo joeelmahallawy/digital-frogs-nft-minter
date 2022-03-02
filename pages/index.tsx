@@ -9,18 +9,14 @@ import {
   useToast,
   useDisclosure,
   Link,
-  Tooltip,
 } from "@chakra-ui/react";
-import { Address } from "@web3-ui/components";
 import React, { useEffect, useState } from "react";
 import { POLYGON_MUMBAI_CHAIN_ID, TOTAL_NUMBER_OF_NFTS, web3 } from "../utils";
 import themes from "../utils/themes";
-import loadContract from "../web3/loadContract";
 import { useAsyncFn } from "react-use";
 import NftModal from "../components/showNFT";
 import mintNFT from "../web3/contractMethods/mint";
 import Countdown from "react-countdown";
-import { useWallet } from "@web3-ui/hooks";
 import switchNetworkPolygon from "../helpers/switchChain";
 import init from "../helpers/init";
 import ConnectButton from "../components/ConnectButton";
