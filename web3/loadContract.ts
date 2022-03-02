@@ -1,7 +1,7 @@
 import { web3 } from "../utils";
 
 const loadContract = async () => {
-  const contractAddress = "0xc77529F7893887A85B6132887e478A0e41583345";
+  const contractAddress = "0x2f97d21A64Dc298753bE11a20793F372cB3ACe8e";
   const contract = new web3.eth.Contract(
     [
       {
