@@ -8,6 +8,7 @@ const mintNFT = async (setTokenid, state, toast, onOpen, setshowModal) => {
       from: state.value?.wallet,
 
       // gasPrice: 92000000000,
+      gasPrice: await web3.eth.getGasPrice(),
       // 120000000
       // TODO:
 
