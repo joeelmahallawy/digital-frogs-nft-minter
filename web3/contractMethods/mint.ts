@@ -7,7 +7,7 @@ const mintNFT = async (setTokenid, state, toast, onOpen, setshowModal) => {
     .send({
       from: state.value?.wallet,
 
-      gasPrice: 92000000000,
+      // gasPrice: 92000000000,
       // 120000000
       // TODO:
 
