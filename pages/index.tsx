@@ -41,9 +41,13 @@ const IndexPage = () => {
           //if successfully switched, reload and reinitialize variables
           router.reload();
         })
-        .catch(() => {
-          // if failed, prompt user
-          alert("Please switch chain to Polygon");
+        .catch(async () => {
+          try {
+            await switchNetworkPolygon();
+          } catch (err) {
+            // if failed, prompt user
+            alert(err.message);
+          }
         });
     } else {
       if (!window.ethereum) {
