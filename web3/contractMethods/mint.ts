@@ -6,11 +6,11 @@ const mintNFT = async (setTokenid, state, toast, onOpen, setshowModal) => {
     .safeMint(state.value?.wallet)
     .send({
       from: state.value?.wallet,
-      // gasLimit: 500000000000000,
-      gasPrice: 9200000000,
+
+      gasPrice: 92000000000,
       // 120000000
       // TODO:
-      // gasLimit: gasLimit.gasLimit,
+
       gas: 5000000,
     })
     .then((val) => {
