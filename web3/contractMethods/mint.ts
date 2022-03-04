@@ -11,7 +11,7 @@ const mintNFT = async (setTokenid, state, toast, onOpen, setshowModal) => {
       // 120000000
       // TODO:
 
-      gas: 5000000,
+      gas: 500000,
     })
     .then((val) => {
       const tokenID = val.events.Transfer.returnValues.tokenId;
