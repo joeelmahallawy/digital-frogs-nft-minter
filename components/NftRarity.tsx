@@ -15818,12 +15818,19 @@ function traitUniqueCalculator(traitMap, value) {
 attrMap.forEach(captureTraitOccurences);
 // console.log(traitMapBackground,traitMapEyes,traitMapBody,traitMapAccessory,traitMapOutfit,traitMapAccessoryTwo,traitMapMedal)
 
+// @ts-expect-error
 var backgroundArr = [...traitMapBackground];
+// @ts-expect-error
 var eyesArr = [...traitMapEyes];
+// @ts-expect-error
 var bodyArr = [...traitMapBody];
+// @ts-expect-error
 var accessoryArr = [...traitMapAccessory];
+// @ts-expect-error
 var outfitArr = [...traitMapOutfit];
+// @ts-expect-error
 var traitMapAccessoryTwo = [...traitMapAccessoryTwo];
+// @ts-expect-error
 var traitMapMedal = [...traitMapMedal];
 
 function generateRarityMaps(inputArr, outputMap) {
@@ -15841,12 +15848,19 @@ generateRarityMaps(traitMapAccessoryTwo, rarityMapAccessoryTwo);
 generateRarityMaps(traitMapMedal, rarityMapMedal);
 
 var mergedMap = new Map([
+  // @ts-expect-error
   ...rarityMapBackground,
+  // @ts-expect-error
   ...rarityMapEyes,
+  // @ts-expect-error
   ...rarityMapBody,
+  // @ts-expect-error
   ...rarityMapAccessory,
+  // @ts-expect-error
   ...rarityMapOutfit,
+  // @ts-expect-error
   ...rarityMapAccessoryTwo,
+  // @ts-expect-error
   ...rarityMapMedal,
 ]);
 
@@ -15855,10 +15869,12 @@ function calculateRarityScore(key) {
   let rarityScore = 0;
   if (key <= 100) {
     for (i = 0; i < 7; i++) {
+      // @ts-expect-error
       rarityScore += mergedMap.get(attrMap.get(key)[i].value);
     }
   } else {
     for (i = 0; i < 6; i++) {
+      // @ts-expect-error
       rarityScore += mergedMap.get(attrMap.get(key)[i].value);
     }
   }
