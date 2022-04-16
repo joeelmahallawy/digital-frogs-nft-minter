@@ -10,6 +10,7 @@ import {
   useDisclosure,
   Link,
 } from "@chakra-ui/react";
+import OGFROG from "../images/OG_FROG.png";
 import React, { useEffect, useState } from "react";
 import { POLYGON_MUMBAI_CHAIN_ID, TOTAL_NUMBER_OF_NFTS, web3 } from "../utils";
 import themes from "../utils/themes";
@@ -21,6 +22,7 @@ import switchNetworkPolygon from "../helpers/switchChain";
 import init from "../helpers/init";
 import ConnectButton from "../components/ConnectButton";
 import { useRouter } from "next/router";
+import NftRarityComponent from "../components/NftRarity";
 
 const Completionist = () => <span>Minting opened!</span>;
 
@@ -72,18 +74,25 @@ const IndexPage = () => {
 
   return (
     <Center h="100vh">
-      <Box h="100%" w={["45%", "45%", "50%", "50%", "55%", "60%"]}>
+      {/* <Box
+        h="100%"
+        w={["45%", "45%", "50%", "50%", "55%", "60%"]}
+      >
         <Image
+          objectFit="contain"
           h="100%"
           w="100%"
-          src="https://hhuzrwzphweoxbywzhhv.supabase.co/storage/v1/object/public/dao-images/daos/351969574104727552.png"
+          src="https://ipfs.io/ipfs/QmdWcJzoZpeD8DtCUSAC5QLvjMrespWbTeKaphMt9PmBck/1.png"
         />
-      </Box>
+      </Box> */}
       <Flex
-        bg={themes.colors.green}
+        // bg={themes.colors.green}
+        // bgImage={OGFROG.src}
+        bg="linear-gradient(182.27deg, #061D1E 40%, #074223 100%)"
         h="100%"
         flexDir="column"
-        w={["55%", "55%", "50%", "50%", "45%", "40%"]}
+        w="100%"
+        // w={["55%", "55%", "50%", "50%", "45%", "40%"]}
       >
         <Center>
           <Center
@@ -130,7 +139,9 @@ const IndexPage = () => {
             bg="gray.500"
             p={5}
             pt={5}
-            w={["55%", "55%", "55%", "70%", "70%", "55%"]}
+            // w={["55%", "55%", "55%", "70%", "70%", "55%"]}
+
+            w="40%"
             borderRadius={10}
             flexDir="column"
           >
@@ -147,9 +158,6 @@ const IndexPage = () => {
                 <br />
                 <span style={{ fontWeight: "500" }}>0 MATIC</span>
               </Text>
-              {/* <Tooltip label="You are whitelisted" fontSize="md">
-                <IoMdListBox />
-              </Tooltip> */}
               <Center flexDir="column">
                 <Button _hover={{ cursor: "default" }} _focus={{}} _active={{}}>
                   Live
@@ -160,6 +168,9 @@ const IndexPage = () => {
               </Center>
             </Center>
             <Button
+              isDisabled={
+                TOTAL_NUMBER_OF_NFTS - Number(state.value?.totalNFTsMinted) == 0
+              }
               onClick={async () => {
                 if (state.value?.hasUserMinted.hasMinted || showModal) {
                   return toast({
@@ -185,28 +196,18 @@ const IndexPage = () => {
             >
               Mint
             </Button>
-            {/* <Button
-              onClick={async () => {
-                const res = await fetch(
-                  "https://bafybeihpckxtorjodh3ewvvjonz3aqzorynq3ghczn3gcr4x3qadl4gafa.ipfs.dweb.link/1.json"
-                );
-                const data = await res.json();
-                setimageURL(data.image);
-                // console.log(data.image);
-              }}
-            >
-              Get JSON data
-            </Button> */}
-            {/* <Image src={imageURL} /> */}
             <NftModal
               isOpen={isOpen}
               onClose={onClose}
               tokenID={tokenid || state.value?.hasUserMinted.tokenID}
             />
           </Center>
-          {(showModal || state.value?.hasUserMinted.hasMinted) && (
-            <Button onClick={onOpen}>Show my NFT</Button>
-          )}
+          <Center gap={10}>
+            {(showModal || state.value?.hasUserMinted.hasMinted) && (
+              <Button onClick={onOpen}>Show my NFT</Button>
+            )}
+            <NftRarityComponent />
+          </Center>
         </Center>
         <Center justifyContent="flex-end" fontSize="xl" p={7} color="white">
           &copy; Copyright 2022
