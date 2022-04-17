@@ -20,6 +20,7 @@ import {
   Table,
   Td,
   Tr,
+  // Image,
 } from "@chakra-ui/react";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
