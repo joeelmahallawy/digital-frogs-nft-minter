@@ -8,10 +8,11 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
+  Image,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { IPFS_BASE_URI } from "../utils";
-import Image from "next/image";
+// import Image from "next/image";
 
 const NftModal = ({ tokenID, isOpen, onClose }) => {
   console.log("TOKEN:", tokenID);
@@ -26,7 +27,10 @@ const NftModal = ({ tokenID, isOpen, onClose }) => {
           <ModalBody>
             {/* FIXME: account for when wallet doesn't haev NFT */}
             {Number(tokenID) > 0 && (
-              <Image src={require(`../Anura_NFT/${tokenID}.png`)} />
+              <Image
+                // src={require(`../Anura_NFT/${tokenID}.png`)}
+                src={`/${tokenID}.png`}
+              />
             )}
           </ModalBody>
 

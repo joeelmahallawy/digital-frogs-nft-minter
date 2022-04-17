@@ -20,10 +20,10 @@ import {
   Table,
   Td,
   Tr,
-  // Image,
+  Image,
 } from "@chakra-ui/react";
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+// import Image from "next/image";
 
 const NftRarityComponent = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -101,7 +101,8 @@ const NftRarityComponent = () => {
                 {hasSearched && (
                   <Image
                     // @ts-expect-error
-                    src={require(`../Anura_NFT/${tokenSearch.current.value}.png`)}
+                    // src={require(`../Anura_NFT/${tokenSearch.current.value}.png`)}
+                    src={`/${tokenSearch.current.value}.png`}
                   />
                 )}
                 <Table size="md">
