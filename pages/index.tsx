@@ -150,7 +150,16 @@ const IndexPage = () => {
                 Remaining:
                 <br />
                 <span style={{ fontWeight: "500" }}>
-                  {TOTAL_NUMBER_OF_NFTS - Number(state.value?.totalNFTsMinted)}
+                  {/* {state.value?.isWhiteListed
+                    ? TOTAL_NUMBER_OF_NFTS -
+                      Number(state.value?.totalNFTsMinted) -
+                      25
+                    : TOTAL_NUMBER_OF_NFTS -
+                      Number(state.value?.totalNFTsMinted) -
+                      68} */}
+                  {TOTAL_NUMBER_OF_NFTS -
+                    Number(state.value?.totalNFTsMinted) -
+                    68}
                 </span>
               </Text>
               <Text fontWeight="bold" fontSize="xl">
@@ -169,7 +178,19 @@ const IndexPage = () => {
             </Center>
             <Button
               isDisabled={
-                TOTAL_NUMBER_OF_NFTS - Number(state.value?.totalNFTsMinted) == 0
+                TOTAL_NUMBER_OF_NFTS -
+                  Number(state.value?.totalNFTsMinted) -
+                  68 ==
+                0
+                // state.value?.isWhiteListed
+                //   ? TOTAL_NUMBER_OF_NFTS -
+                //       Number(state.value?.totalNFTsMinted) -
+                //       25 ==
+                //     0
+                //   : TOTAL_NUMBER_OF_NFTS -
+                //       Number(state.value?.totalNFTsMinted) -
+                //       68 ==
+                //     0
               }
               onClick={async () => {
                 if (state.value?.hasUserMinted.hasMinted || showModal) {
