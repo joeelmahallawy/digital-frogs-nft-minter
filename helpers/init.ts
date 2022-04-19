@@ -7,6 +7,7 @@ const init = async () => {
   const isWhiteListed = await contract.methods.whiteList(wallet[0]).call();
   const hasUserMinted: { hasMinted: boolean; tokenID: string } =
     await contract.methods.usersMinted(wallet[0]).call();
+
   return {
     contract,
     wallet: wallet[0],

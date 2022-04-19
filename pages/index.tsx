@@ -182,6 +182,7 @@ const IndexPage = () => {
                   Number(state.value?.totalNFTsMinted) -
                   68 ==
                 0
+
                 // state.value?.isWhiteListed
                 //   ? TOTAL_NUMBER_OF_NFTS -
                 //       Number(state.value?.totalNFTsMinted) -
