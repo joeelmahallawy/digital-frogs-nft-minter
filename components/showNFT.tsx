@@ -26,7 +26,7 @@ const NftModal = ({ tokenID, isOpen, onClose }) => {
           {Number(tokenID) > 400 ? (
             <Heading>
               You cannot see your NFT yet, however you will be able to once you
-              bridge over your NFT to the Avalanch blockchain.
+              bridge over your NFT to the Avalanche blockchain.
             </Heading>
           ) : (
             <>

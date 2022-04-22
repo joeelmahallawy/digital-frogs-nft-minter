@@ -68,12 +68,22 @@ const NftRarityComponent = () => {
                 onClick={() => {
                   if (
                     // @ts-expect-error
-                    tokenSearch.current.value > 400 ||
+                    tokenSearch.current.value > 500 ||
                     // @ts-expect-error
                     tokenSearch.current.value < 1
                   ) {
                     // @ts-expect-error
                     alert(`There is no frog #${tokenSearch.current.value}`);
+                  } else if (
+                    // @ts-expect-error
+                    tokenSearch.current.value >= 401 &&
+                    // @ts-expect-error
+                    tokenSearch.current.value <= 500
+                  ) {
+                    alert(
+                      // @ts-expect-error
+                      `Cannot display frog #${tokenSearch.current.value} until after bridging to the Avalanche blockchain`
+                    );
                   } else {
                     sethasSearched(true);
                     loadDetails(

@@ -125,7 +125,7 @@ const IndexPage = () => {
 
           <ConnectButton state={state} />
         </Center>
-        <Center flexDir="column" gap={5} h="100%">
+        <Center w="100%" flexDir="column" gap={5} h="100%">
           <Heading color="white" fontSize="1.75rem">
             Countdown clock:{" "}
             <span style={{ fontWeight: "500", color: "lightgreen" }}>
@@ -139,14 +139,22 @@ const IndexPage = () => {
             bg="gray.500"
             p={5}
             pt={5}
-            // w={["55%", "55%", "55%", "70%", "70%", "55%"]}
-
-            w="40%"
+            w={["65%", "60%", "60%", "60%", "50%", "40%"]}
             borderRadius={10}
             flexDir="column"
           >
-            <Center w="100%" gap={5} justifyContent="space-between">
-              <Text fontWeight="bold" fontSize="xl">
+            <Center
+              display={["block", "block", "flex", "flex", "flex"]}
+              w="100%"
+              gap={5}
+              justifyContent="space-between"
+            >
+              <Text
+                textAlign="center"
+                fontWeight="bold"
+                fontSize="xl"
+                mb={[5, 4, 4, 2, 0]}
+              >
                 Remaining:
                 <br />
                 <span style={{ fontWeight: "500" }}>
@@ -162,7 +170,12 @@ const IndexPage = () => {
                     68}
                 </span>
               </Text>
-              <Text fontWeight="bold" fontSize="xl">
+              <Text
+                textAlign="center"
+                fontWeight="bold"
+                fontSize="xl"
+                mb={[5, 4, 4, 2, 0]}
+              >
                 Public price:
                 <br />
                 <span style={{ fontWeight: "500" }}>0 MATIC</span>
