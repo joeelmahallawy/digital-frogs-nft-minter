@@ -127,12 +127,13 @@ const IndexPage = () => {
         </Center>
         <Center w="100%" flexDir="column" gap={5} h="100%">
           <Heading color="white" fontSize="1.75rem">
-            Countdown clock:{" "}
+            Minting has closed
+            {/* Countdown clock:{" "}
             <span style={{ fontWeight: "500", color: "lightgreen" }}>
               <Countdown date={new Date("3/1/22")}>
                 <Completionist />
               </Countdown>
-            </span>
+            </span> */}
           </Heading>
           <Center
             color="black"
@@ -165,9 +166,10 @@ const IndexPage = () => {
                     : TOTAL_NUMBER_OF_NFTS -
                       Number(state.value?.totalNFTsMinted) -
                       68} */}
-                  {TOTAL_NUMBER_OF_NFTS -
+                  0
+                  {/* {TOTAL_NUMBER_OF_NFTS -
                     Number(state.value?.totalNFTsMinted) -
-                    68}
+                    68} */}
                 </span>
               </Text>
               <Text
@@ -191,10 +193,7 @@ const IndexPage = () => {
             </Center>
             <Button
               isDisabled={
-                TOTAL_NUMBER_OF_NFTS -
-                  Number(state.value?.totalNFTsMinted) -
-                  68 ==
-                0
+                true
 
                 // state.value?.isWhiteListed
                 //   ? TOTAL_NUMBER_OF_NFTS -
